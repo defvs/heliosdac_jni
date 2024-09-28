@@ -1,0 +1,3 @@
+[submodule "lib/helios_dac"]
+	path = lib/helios_dac
+	url = https://github.com/Grix/helios_dac
