@@ -104,12 +104,6 @@ publishing {
     publications {
         create<MavenPublication>("mavenJava") {
             from(components["java"])
-            artifact(file("cbuild/libHeliosJNI.so")) {
-                classifier = "linux-x86_64"
-            }
-            artifact(file("cbuild/libHeliosDac.so")) {
-                classifier = "linux-x86_64"
-            }
         }
     }
 }
