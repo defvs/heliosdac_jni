@@ -19,7 +19,10 @@ tasks.test {
 }
 
 // Read the flag from gradle.properties
-val buildNativeLibsEnabled = project.findProperty("buildNativeLibs")?.toString()?.toBoolean() ?: true
+val buildNativeLibsEnabled = let {
+    if (System.getenv("JITPACK") == "true") false // Disable building of native libs if Jitpack
+    else project.findProperty("buildNativeLibs")?.toString()?.toBoolean() ?: false
+}
 
 // Paths
 val heliosSdkPath = file("lib/helios_dac/sdk/cpp")
