@@ -10,7 +10,7 @@ repositories {
 }
 
 dependencies {
-    implementation(files("../build/libs/heliosdac-0.1.jar"))
+    implementation(project(":"))
 }
 
 tasks.test {
