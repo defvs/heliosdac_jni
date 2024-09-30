@@ -18,6 +18,9 @@ tasks.test {
     useJUnitPlatform()
 }
 
+// Read the flag from gradle.properties
+val buildNativeLibsEnabled = project.findProperty("buildNativeLibs")?.toString()?.toBoolean() ?: true
+
 // Paths
 val heliosSdkPath = file("lib/helios_dac/sdk/cpp")
 val outputDir = file("cbuild") // Directory for compiled shared libraries
@@ -73,12 +76,12 @@ val copyNativeLibsToResources by tasks.creating(Copy::class) {
 }
 
 tasks.compileKotlin {
-    dependsOn(copyNativeLibsToResources)
+    if (buildNativeLibsEnabled) dependsOn(copyNativeLibsToResources)
 }
 
 // Modify the 'processResources' task to include native libraries in the final JAR
 tasks.processResources {
-    dependsOn(copyNativeLibsToResources)
+    if (buildNativeLibsEnabled) dependsOn(copyNativeLibsToResources)
 }
 
 tasks.named("jar") {
