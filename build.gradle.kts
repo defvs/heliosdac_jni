@@ -1,10 +1,10 @@
 plugins {
-    kotlin("jvm") version "1.9.10"
+    kotlin("jvm") version "2.0.10"
     `maven-publish`
 }
 
 group = "dev.defvs"
-version = "1.0-SNAPSHOT"
+version = "0.1"
 
 repositories {
     mavenCentral()
