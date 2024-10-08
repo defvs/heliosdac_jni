@@ -4,7 +4,7 @@ plugins {
 }
 
 group = "dev.defvs"
-version = "0.1"
+version = "0.2"
 
 repositories {
     mavenCentral()
@@ -26,7 +26,7 @@ val buildNativeLibsEnabled = let {
 
 // Paths
 val heliosSdkPath = file("lib/helios_dac/sdk/cpp")
-val outputDir = file("cbuild") // Directory for compiled shared libraries
+val outputDir = layout.buildDirectory.file("cbuild").get().asFile // Directory for compiled shared libraries
 val resourcesDir = file("src/main/resources/native") // Target resources directory for packaging
 
 // Task to build the native Helios DAC library
